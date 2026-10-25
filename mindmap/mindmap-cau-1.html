@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Mindmap Câu 1 – EBC ×10</title>
 <link rel="stylesheet" href="fonts/be-vietnam-pro.css">
+<link rel="stylesheet" href="icons/icons.css">
 <style>
   :root {
     --ink: #14213d;
@@ -11,7 +12,7 @@
     --bg: #f5f7fb;
     --navy: #0b1f3a;
     --navy-2: #163a6b;
-    --c1: #e8590c;   /* Bài toán EBC */
+    --c1: #e8590c;   /* Hiểu đúng EBC */
     --c2: #1971c2;   /* Cá nhân */
     --c3: #2b8a3e;   /* Đội nhóm */
     --c4: #7048e8;   /* Đơn vị */
@@ -30,72 +31,80 @@
   #links { position: absolute; inset: 0; width: 1920px; height: 1080px; z-index: 0; }
   .frame { position: relative; z-index: 1; padding: 26px 36px 0; height: 100%; display: flex; flex-direction: column; }
 
+  /* Icons: Lucide SVGs used as masks so they take the current text colour */
+  .ico { display: inline-block; width: 22px; height: 22px; background: currentColor; flex: none;
+         -webkit-mask: var(--i) center / contain no-repeat; mask: var(--i) center / contain no-repeat; }
+
   /* Header */
   header.top { display: flex; align-items: flex-end; justify-content: space-between; height: 78px; }
-  .title h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .title h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
   .title h1 .x10 { color: var(--c1); }
-  .title p { margin-top: 6px; font-size: 16px; color: var(--muted); font-weight: 500; }
+  .title p { margin-top: 6px; font-size: 18px; color: var(--muted); font-weight: 500; }
   .meta { display: flex; gap: 10px; align-items: center; }
-  .pill { font-size: 14px; font-weight: 600; padding: 7px 14px; border-radius: 999px; background: #fff; border: 1px solid #d6dde8; color: var(--navy-2); white-space: nowrap; }
+  .pill { font-size: 15px; font-weight: 600; padding: 8px 15px; border-radius: 999px; background: #fff; border: 1px solid #d6dde8; color: var(--navy-2); white-space: nowrap; }
   .pill.dark { background: var(--navy); color: #fff; border-color: var(--navy); }
 
   /* Main grid */
   .main { flex: 1; display: grid; grid-template-columns: 610px 1fr 610px; column-gap: 46px; padding: 18px 0 16px; min-height: 0; }
   .col { display: flex; flex-direction: column; gap: 18px; min-height: 0; }
   .card {
-    background: #fff; border-radius: 16px; padding: 16px 20px 16px;
+    background: #fff; border-radius: 18px; padding: 16px 22px;
     box-shadow: 0 1px 2px rgba(16,24,40,.06), 0 6px 18px rgba(16,24,40,.06);
     border-top: 6px solid var(--c); position: relative; flex: 1 1 auto; min-height: 0;
   }
-  .card header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-  .num { width: 34px; height: 34px; border-radius: 50%; background: var(--c); color: #fff; font-weight: 800; font-size: 18px; display: grid; place-items: center; flex: none; }
-  .card h2 { font-size: 21px; font-weight: 800; color: var(--c); letter-spacing: .2px; line-height: 1.15; }
-  .card .lever { font-size: 13px; font-weight: 600; color: var(--muted); margin-top: 2px; }
-  .card ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  .card li { font-size: 15.6px; line-height: 1.42; padding-left: 16px; position: relative; color: #1f2937; }
-  .card li::before { content: ""; position: absolute; left: 2px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+  .card header { display: flex; align-items: center; gap: 13px; margin-bottom: 11px; }
+  .badge { width: 44px; height: 44px; border-radius: 50%; background: var(--c); color: #fff; display: grid; place-items: center; flex: none; }
+  .badge .ico { width: 24px; height: 24px; }
+  .card h2 { font-size: 23px; font-weight: 800; color: var(--c); letter-spacing: .2px; line-height: 1.15; }
+  .card h2 .n { color: #9aa5b5; font-weight: 700; margin-right: 6px; }
+  .card .sub { font-size: 15.5px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+  .card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .card li { font-size: 17px; line-height: 1.4; padding-left: 18px; position: relative; color: #1f2937; }
+  .card li::before { content: ""; position: absolute; left: 2px; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
   .card li b { color: var(--ink); font-weight: 700; }
-  .k { display: inline-block; font-weight: 700; color: var(--c); }
-  .sub { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 2px; }
-  .box { border-radius: 10px; padding: 8px 11px; font-size: 14.8px; line-height: 1.38; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 9px 0; }
+  .box { border-radius: 12px; padding: 9px 12px; font-size: 15.5px; line-height: 1.38; }
   .box.no { background: #fff4ee; border: 1px solid #ffd8c2; }
   .box.yes { background: #eefaf1; border: 1px solid #c3ebcd; }
-  .box .h { font-weight: 800; font-size: 13.5px; margin-bottom: 2px; }
+  .box .h { font-weight: 800; font-size: 16px; margin-bottom: 2px; }
   .box.no .h { color: #c2410c; } .box.yes .h { color: #2b8a3e; }
-  .steps { display: flex; gap: 6px; margin-top: 4px; flex-wrap: nowrap; }
-  .step { flex: 1; background: color-mix(in srgb, var(--c) 9%, #fff); border: 1px solid color-mix(in srgb, var(--c) 28%, #fff); border-radius: 9px; padding: 6px 8px; font-size: 14px; line-height: 1.3; }
-  .step b { color: var(--c); }
+  .steps { display: flex; gap: 8px; margin: 6px 0 9px 18px; }
+  .step { flex: 1; background: color-mix(in srgb, var(--c) 9%, #fff); border: 1px solid color-mix(in srgb, var(--c) 28%, #fff); border-radius: 10px; padding: 7px 9px; font-size: 15px; line-height: 1.3; }
+  .step b { color: var(--c); font-size: 16px; }
   .c1 { --c: var(--c1); } .c2 { --c: var(--c2); } .c3 { --c: var(--c3); } .c4 { --c: var(--c4); }
 
   /* Hub */
   .hubwrap { display: flex; align-items: center; justify-content: center; }
   .hub {
-    width: 100%; border-radius: 26px; padding: 26px 28px 24px; color: #fff; text-align: center;
+    width: 100%; border-radius: 28px; padding: 24px 26px 22px; color: #fff; text-align: center;
     background: linear-gradient(160deg, var(--navy-2) 0%, var(--navy) 70%);
     box-shadow: 0 14px 40px rgba(11,31,58,.30);
   }
-  .hub .lbl { font-size: 13px; font-weight: 700; letter-spacing: 2.5px; color: #9fb7d9; }
-  .hub .big { font-size: 64px; font-weight: 800; line-height: 1.05; margin-top: 4px; letter-spacing: -1px; }
-  .hub .big span { color: #ff8a3d; }
-  .hub .tagline { font-size: 17px; font-weight: 600; margin-top: 6px; color: #e6eefb; }
-  .formula { margin-top: 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 14px; padding: 12px 14px; text-align: left; }
-  .formula .f { font-size: 16.5px; font-weight: 700; line-height: 1.45; }
-  .formula .f2 { font-size: 15px; font-weight: 500; color: #cfdcf2; margin-top: 4px; }
+  .hub .lbl { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; letter-spacing: 2.5px; color: #9fb7d9; }
+  .hub .lbl .ico { width: 20px; height: 20px; color: #ff8a3d; }
+  .hub .what { font-size: 24px; font-weight: 700; margin-top: 8px; color: #e6eefb; }
+  .hub .big { font-size: 96px; font-weight: 800; line-height: 1; color: #ff8a3d; letter-spacing: -2px; }
+  .hub .tagline { font-size: 18.5px; font-weight: 600; margin-top: 8px; color: #e6eefb; }
+  .formula { margin-top: 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 14px; padding: 12px 14px; }
+  .formula .f { font-size: 17.5px; font-weight: 700; line-height: 1.4; }
+  .formula .f2 { font-size: 15.5px; font-weight: 500; color: #cfdcf2; margin-top: 4px; }
   .formula .eq { color: #ffb37a; }
-  .levers { margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; text-align: left; }
-  .lv { background: #fff; color: var(--ink); border-radius: 12px; padding: 9px 11px 9px 13px; border-left: 6px solid var(--c); }
-  .lv .t { font-size: 14.5px; font-weight: 800; color: var(--c); }
-  .lv .d { font-size: 13px; line-height: 1.32; color: #374151; margin-top: 2px; }
-  .lv .who { font-size: 12px; font-weight: 700; color: #6b7280; margin-top: 3px; }
-  .tiers { margin-top: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 700; }
-  .tiers .t { padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.12); }
+  .ways-t { margin-top: 16px; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; color: #9fb7d9; }
+  .levers { margin-top: 9px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; text-align: left; }
+  .lv { background: #fff; color: var(--ink); border-radius: 14px; padding: 11px 12px; display: flex; gap: 10px; align-items: flex-start; }
+  .lv .ico { width: 26px; height: 26px; color: var(--c); margin-top: 1px; }
+  .lv .t { font-size: 16.5px; font-weight: 800; color: var(--c); line-height: 1.25; }
+  .lv .d { font-size: 14.5px; line-height: 1.3; color: #374151; margin-top: 3px; }
+  .tiers-t { margin-top: 16px; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; color: #9fb7d9; }
+  .tiers { margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 15.5px; font-weight: 700; }
+  .tiers .t { padding: 7px 11px; border-radius: 999px; background: rgba(255,255,255,.12); white-space: nowrap; }
   .tiers .ar { color: #ff8a3d; }
 
   /* Footer */
   footer.conc { height: 92px; margin: 0 -36px; background: var(--navy); color: #fff; display: flex; align-items: center; gap: 22px; padding: 0 36px; }
-  .conc .tagc { font-size: 15px; font-weight: 800; letter-spacing: 2px; color: #ff8a3d; white-space: nowrap; }
-  .conc .items { display: grid; grid-template-columns: 1.25fr 1fr 1fr 1fr; gap: 14px; flex: 1; }
-  .conc .it { border-left: 3px solid rgba(255,255,255,.25); padding-left: 12px; font-size: 14.5px; line-height: 1.35; color: #e8eef8; }
+  .conc .tagc { display: inline-flex; align-items: center; gap: 9px; font-size: 17px; font-weight: 800; letter-spacing: 2px; color: #ff8a3d; white-space: nowrap; }
+  .conc .items { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1fr; gap: 14px; flex: 1; }
+  .conc .it { border-left: 3px solid rgba(255,255,255,.25); padding-left: 12px; font-size: 16.5px; line-height: 1.35; color: #e8eef8; }
   .conc .it b { color: #fff; }
 </style>
 </head>
@@ -106,11 +115,11 @@
   <header class="top">
     <div class="title">
       <h1>Tăng năng suất (EBC) gấp <span class="x10">10 lần</span> · Healthcare Global</h1>
-      <p>Từ người thực thi đến người chỉ huy AI: giải bài toán lớn từ những bài toán nhỏ</p>
+      <p>Từ người tự làm đến người chỉ huy AI: thay đổi từ nhỏ đến lớn</p>
     </div>
     <div class="meta">
-      <span class="pill">AI-first 2026–2030 → AI-native</span>
-      <span class="pill">AI là nền tảng vận hành · con người là trung tâm sáng tạo</span>
+      <span class="pill">Chiến lược AI-first 2026–2030 của FPT</span>
+      <span class="pill">AI vận hành · con người sáng tạo</span>
       <span class="pill dark">Câu 1 · Mindmap</span>
     </div>
   </header>
@@ -119,37 +128,38 @@
     <!-- LEFT -->
     <div class="col">
       <section class="card c1" id="n1">
-        <header><span class="num">1</span><div><h2>BÀI TOÁN ×10: HIỂU ĐÚNG EBC</h2><div class="lever">Làm chiếc bánh to hơn, không chia lại chiếc bánh cũ</div></div></header>
+        <header><span class="badge"><span class="ico i-pie"></span></span><div><h2><span class="n">1</span>HIỂU ĐÚNG EBC</h2><div class="sub">Làm chiếc bánh to hơn, không chia lại bánh cũ</div></div></header>
         <ul>
-          <li><b>EBC</b> = Doanh thu − Chi phí ngoài nhân sự (thuê ngoài, bản quyền, hạ tầng, AI) = Lợi nhuận + Chi phí nhân sự</li>
-          <li><b>Cắt lương không tăng EBC</b>, chỉ chia lại chiếc bánh. Bánh to lên mới vừa tăng thu nhập người làm, vừa tăng lợi nhuận</li>
+          <li><b>EBC = Doanh thu − Chi phí ngoài nhân sự</b> (cũng bằng Lợi nhuận + Lương)</li>
+          <li><b>Cắt lương</b>: EBC không đổi, chỉ là chia lại chiếc bánh</li>
         </ul>
-        <div class="sub">
-          <div class="box no"><div class="h">✗ Cắt người còn 1/10</div>Nghe nhanh, nhưng tổng giá trị không đổi, không bền vững</div>
-          <div class="box yes"><div class="h">✓ Giữ người, EBC đơn vị ×10</div>100 người tạo giá trị của 1.000 người. Con người là trung tâm</div>
+        <div class="pair">
+          <div class="box no"><div class="h">✗ Cắt người còn 1/10</div>Không tạo thêm giá trị, không bền vững</div>
+          <div class="box yes"><div class="h">✓ Giữ người, bánh to ×10</div>100 người tạo giá trị của 1.000 người</div>
         </div>
-        <ul style="margin-top:8px">
-          <li><b>Cải tiến</b>: nhích một thành phần +10–30%. <b>Đột phá</b>: đổi nhiều thành phần cùng lúc, có thêm doanh thu từ sản phẩm đóng gói, không phụ thuộc số người</li>
-          <li>Phá định kiến ngành gia công: <b>"muốn tăng doanh thu phải tăng người"</b></li>
+        <ul>
+          <li><b>Cải tiến</b>: tốt hơn 10–30%. <b>Đột phá</b>: đổi nhiều thứ cùng lúc</li>
+          <li>Phá định kiến <b>"muốn tăng doanh thu phải tăng người"</b></li>
         </ul>
       </section>
 
       <section class="card c2" id="n2">
-        <header><span class="num">2</span><div><h2>CÁ NHÂN: NGƯỜI CHỈ HUY AI</h2><div class="lever">Đòn bẩy: sản lượng mỗi người ↑</div></div></header>
+        <header><span class="badge"><span class="ico i-user"></span></span><div><h2><span class="n">2</span>CÁ NHÂN</h2><div class="sub">Từ người tự làm thành người chỉ huy AI</div></div></header>
         <ul>
-          <li><b>Agent (trợ thủ AI)</b> làm được tác vụ khó (Big Sleep của Google tìm ra lỗ hổng mà công cụ kiểm thử bỏ sót), làm cả ngày lẫn đêm cho khách hàng ở nhiều múi giờ</li>
-          <li><b>Kỹ sư</b>: giao việc, kiểm tra, ra quyết định. Nút thắt chuyển sang <b>khâu duyệt</b>; y tế bắt buộc có người chịu trách nhiệm</li>
-          <li>Số agent mỗi người phụ thuộc năng lực duyệt, <b>đo trong thí điểm</b>. Không cắt người, không cần tuyển thêm khi doanh thu tăng</li>
-          <li><b>Đầu tư trước nhân sự chủ chốt</b>: duyệt nhanh, thấy lỗi AI sớm, giao việc rõ ràng</li>
+          <li>Trợ thủ AI làm được <b>việc khó</b>, làm <b>cả ngày lẫn đêm</b></li>
+          <li>Kỹ sư chuyển sang <b>giao việc, kiểm tra, quyết định</b></li>
+          <li>Chỗ chậm mới là <b>khâu duyệt</b>: y tế luôn cần người chịu trách nhiệm</li>
+          <li>Mỗi người điều phối bao nhiêu AI: <b>đo qua thí điểm</b></li>
+          <li><b>Ưu tiên người giỏi trước</b>; người trẻ học theo 3 bậc:</li>
         </ul>
         <div class="steps">
-          <div class="step"><b>Bậc 1</b> · Tự làm + đọc kết quả AI, có người kèm</div>
-          <div class="step"><b>Bậc 2</b> · Làm việc với từng agent</div>
-          <div class="step"><b>Bậc 3</b> · Quản lý nhóm agent</div>
+          <div class="step"><b>1</b> · Tự làm, có người kèm</div>
+          <div class="step"><b>2</b> · Làm với 1 trợ thủ AI</div>
+          <div class="step"><b>3</b> · Điều phối nhiều trợ thủ AI</div>
         </div>
-        <ul style="margin-top:8px">
-          <li><b>Người trẻ</b>: không giao ngay "đàn quân AI"; học tuân thủ dữ liệu y tế trước</li>
-          <li><b>Tâm lý</b>: nói rõ từ đầu. Cam kết = <b>đào tạo lại</b> + <b>chia lại EBC tăng thêm</b>; thời gian rảnh dành cho ý tưởng mới</li>
+        <ul>
+          <li><b>Không cắt người</b>: đào tạo lại + chia thưởng từ phần EBC tăng thêm</li>
+          <li>Thời gian AI tiết kiệm được dành cho <b>ý tưởng mới</b></li>
         </ul>
       </section>
     </div>
@@ -157,19 +167,22 @@
     <!-- CENTER -->
     <div class="hubwrap">
       <div class="hub" id="hub">
-        <div class="lbl">MỤC TIÊU</div>
-        <div class="big">EBC/người <span>×10</span></div>
+        <div class="lbl"><span class="ico i-target"></span>MỤC TIÊU</div>
+        <div class="what">EBC mỗi người</div>
+        <div class="big">×10</div>
         <div class="tagline">Giữ hơn 100 người · tạo giá trị của 1.000 người</div>
         <div class="formula">
-          <div class="f">EBC/người <span class="eq">=</span> (Doanh thu dịch vụ + Doanh thu từ sản phẩm đóng gói) <span class="eq">−</span> Chi phí ngoài nhân sự</div>
-          <div class="f2">trong đó Doanh thu dịch vụ = Sản lượng mỗi người × Giá trị thu về trên mỗi phần việc</div>
+          <div class="f">EBC mỗi người <span class="eq">=</span> Doanh thu (dịch vụ + sản phẩm) <span class="eq">−</span> Chi phí ngoài nhân sự</div>
+          <div class="f2">Doanh thu dịch vụ = Số việc mỗi người làm × Tiền thu về mỗi việc</div>
         </div>
+        <div class="ways-t">4 CÁCH LÀM CHIẾC BÁNH TO HƠN</div>
         <div class="levers">
-          <div class="lv c2"><div class="t">Sản lượng mỗi người ↑</div><div class="d">Mỗi kỹ sư biết chỉ huy agent</div><div class="who">→ Nhánh 2</div></div>
-          <div class="lv c3"><div class="t">Chi phí ngoài nhân sự ↓</div><div class="d">Cả nhóm theo một quy trình chung</div><div class="who">→ Nhánh 3, 4</div></div>
-          <div class="lv c1"><div class="t">Giá trị mỗi phần việc ↑</div><div class="d">Kết hợp bán giờ công và bán kết quả</div><div class="who">→ Mô hình kinh doanh</div></div>
-          <div class="lv c4"><div class="t">Doanh thu từ sản phẩm ↑</div><div class="d">Đóng gói những gì đã làm, bán được nhiều lần</div><div class="who">→ Gói giải pháp</div></div>
+          <div class="lv c2"><span class="ico i-up"></span><div><div class="t">Mỗi người làm được nhiều hơn</div><div class="d">Nhờ chỉ huy trợ thủ AI</div></div></div>
+          <div class="lv c1"><span class="ico i-money"></span><div><div class="t">Mỗi việc thu được nhiều hơn</div><div class="d">Bán cả kết quả, không chỉ bán giờ công</div></div></div>
+          <div class="lv c4"><span class="ico i-package"></span><div><div class="t">Có sản phẩm bán nhiều lần</div><div class="d">Đóng gói những gì đã làm</div></div></div>
+          <div class="lv c3"><span class="ico i-wallet"></span><div><div class="t">Giữ chi phí ngoài nhân sự thấp</div><div class="d">Cách làm chung, dùng AI có kiểm soát</div></div></div>
         </div>
+        <div class="tiers-t">THAY ĐỔI TỪ NHỎ ĐẾN LỚN</div>
         <div class="tiers"><span class="t">Cá nhân</span><span class="ar">→</span><span class="t">Đội nhóm</span><span class="ar">→</span><span class="t">Đơn vị</span><span class="ar">→</span><span class="t">Khách hàng</span></div>
       </div>
     </div>
@@ -177,37 +190,39 @@
     <!-- RIGHT -->
     <div class="col">
       <section class="card c3" id="n3">
-        <header><span class="num">3</span><div><h2>ĐỘI NHÓM: MỘT "CÁI CHUNG"</h2><div class="lever">Đòn bẩy: chi phí ↓ · chất lượng ↑ · đủ dữ liệu để nhận hợp đồng trọn gói</div></div></header>
+        <header><span class="badge"><span class="ico i-users"></span></span><div><h2><span class="n">3</span>ĐỘI NHÓM</h2><div class="sub">Một cách làm chung cho cả nhóm</div></div></header>
         <ul>
-          <li><b>Vấn đề</b>: cùng một yêu cầu mà kết quả mỗi người một khác; chi phí AI không đo được; không ước tính được công sức thì <b>không dám nhận hợp đồng trọn gói (fixed price)</b></li>
-          <li><b>Nền tảng chung</b>: agent và hướng dẫn mẫu, tiêu chí "đạt", bước bắt buộc (không dùng dữ liệu bệnh nhân thật · có người duyệt · lưu vết để kiểm định)</li>
-          <li><b>Sáng tạo trên cái chung</b>, không mỗi người một hướng</li>
-          <li><b>Cải tiến liên tục</b>: nhóm chủ chốt giữ nền tảng, ai cũng đề xuất được (như duyệt code trước khi gộp). Kinh nghiệm thành tài sản, là nguyên liệu cho gói giải pháp</li>
-          <li><b>Giám sát quy trình</b>, không giám sát con người, và có điểm dừng. Tư duy đổi từ "làm vì bị yêu cầu" sang "làm vì thấy hiệu quả"</li>
-          <li><b>Đo bằng kết quả</b>: EBC nhóm · thời gian làm · chi phí AI mỗi việc · tỷ lệ làm lại (EBC cá nhân chỉ để tham khảo). Từ đó có công thức chung: mỗi người điều phối bao nhiêu agent, thế nào là "đạt"</li>
+          <li><b>Hiện tại</b>: mỗi người dùng AI một kiểu, kết quả, chi phí khó kiểm soát</li>
+          <li><b>Cách làm chung</b>: mẫu có sẵn · chuẩn "đạt" · bước bắt buộc</li>
+          <li><b>Bắt buộc với y tế</b>: không đưa dữ liệu bệnh nhân thật vào AI · luôn có người duyệt · lưu lại lịch sử</li>
+          <li><b>Ai cũng góp ý cải tiến</b>, kinh nghiệm thành tài sản chung</li>
+          <li><b>Kèm sát lúc đầu</b>, quen rồi thì thả để tự do sáng tạo</li>
+          <li><b>Đo theo nhóm</b>: EBC, thời gian, chi phí AI, tỷ lệ phải làm lại</li>
+          <li>Ước tính được chi phí thì <b>dám nhận hợp đồng trọn gói</b></li>
         </ul>
       </section>
 
       <section class="card c4" id="n4">
-        <header><span class="num">4</span><div><h2>ĐƠN VỊ: MỞ RỘNG AI & BẢO MẬT</h2><div class="lever">Đòn bẩy: thắng thêm hợp đồng · giảm thuê ngoài · giữ niềm tin</div></div></header>
+        <header><span class="badge"><span class="ico i-building"></span></span><div><h2><span class="n">4</span>ĐƠN VỊ</h2><div class="sub">Mở rộng AI, bảo mật đi cùng</div></div></header>
         <ul>
-          <li><b>Mở rộng</b> sang tuyển dụng, marketing, hồ sơ dự án: con người kiểm soát đầu ra. Hiệu quả thì nhân rộng ra tập đoàn</li>
-          <li><b>Tuyển dụng</b>: AI hỗ trợ sàng lọc, quyết định cuối cùng là của con người</li>
-          <li><b>Tiết kiệm thời gian không tự thành EBC</b>. EBC chỉ tăng khi thời gian đó dùng cho việc tạo doanh thu, hoặc giảm thuê ngoài (khi AI rẻ hơn)</li>
-          <li><b>Bảo mật đi song song, không chạy sau</b>: dữ liệu nội bộ và dữ liệu bệnh nhân. Rủi ro lớn nhất là thói quen dùng AI bên ngoài, nên chỉ dùng công cụ đã được phê duyệt</li>
-          <li><b>Tuân thủ luật dữ liệu</b> từng thị trường: Mỹ (HIPAA), châu Âu (GDPR, EU AI Act), Nhật (APPI). Bảo mật và tuân thủ trở thành <b>lợi thế để bán</b></li>
+          <li>Đưa AI vào <b>tuyển dụng, marketing, hồ sơ dự án</b>; hiệu quả thì nhân rộng ra tập đoàn</li>
+          <li><b>Tuyển dụng</b>: AI lọc hồ sơ, con người quyết định</li>
+          <li>Thời gian tiết kiệm phải <b>đổi thành tiền</b>: thắng thêm hợp đồng, bớt thuê ngoài</li>
+          <li><b>Chỉ dùng công cụ AI đã được duyệt</b></li>
+          <li><b>Bảo vệ dữ liệu bệnh nhân</b>, tuân thủ luật dữ liệu của Mỹ, châu Âu, Nhật</li>
+          <li>Bảo mật tốt là <b>lợi thế khi bán hàng</b></li>
         </ul>
       </section>
     </div>
   </div>
 
   <footer class="conc">
-    <div class="tagc">KẾT LUẬN</div>
+    <div class="tagc"><span class="ico i-flag"></span>KẾT LUẬN</div>
     <div class="items">
-      <div class="it"><b>Thay đổi từ nhỏ đến lớn</b>: cá nhân → đội nhóm → đơn vị → cách tạo và bán giá trị cho khách hàng</div>
-      <div class="it"><b>Vững chắc nhưng không chậm</b>: tốc độ thay đổi không thua tốc độ phát triển của AI</div>
-      <div class="it"><b>AI không thay thế</b> mà khuếch đại năng lực con người</div>
-      <div class="it"><b>Đi xa hơn</b> trên con đường AI-first mà FPT đã lựa chọn</div>
+      <div class="it"><b>Thay đổi từ nhỏ đến lớn</b>: cá nhân → đội nhóm → đơn vị → khách hàng</div>
+      <div class="it"><b>Vững chắc</b> nhưng không chậm hơn AI</div>
+      <div class="it"><b>AI không thay thế</b>, mà khuếch đại con người</div>
+      <div class="it"><b>Đi xa hơn</b> cùng con đường AI-first của FPT</div>
     </div>
   </footer>
 </div>
